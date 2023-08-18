@@ -1,0 +1,48 @@
+.container
+{
+     position :fixed; 
+    width:100%;
+    height:100%;
+    border: 10px lightgray;
+    display: flex; 
+}
+.left
+{
+    width:100%;
+     height: 100%; 
+
+
+    
+}
+.right
+{
+    font-family: 'Open Sans', sans-serif;
+    padding-left: 100px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    padding-right: 50px;
+    width:70%;
+    height:100%;
+
+}
+.button
+{
+    padding-left: 42px;
+    padding-right: 42px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.button1
+{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.para
+{
+    font-size: 10px;
+    padding-left: 20px;
+}
+
+ 
