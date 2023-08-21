@@ -51,7 +51,8 @@
 #emailwarning
 {
     margin: 0;
-    color: red;
+    color:lightslategray;
+    border: 1px solid lightgrey;
     font-size: 10px;
     display: none;
 }
@@ -68,7 +69,8 @@
 #passwarning
 {
     margin:0;
-    color: red;
+    color:lightslategray;
+    border: 1px solid lightgrey;
     font-size: 10px;
     display: none;
 }

@@ -24,20 +24,21 @@
                 <label>Name</label><br>
                 <input type="text" placeholder="Enter your Name" required><br><br>
                 <div class="hoverEffect">
-                <div class=" Email">
-                    <label id="labelemail">Email</label>
-                    <p id="emailwarning">*Email should contain @gmail.com</p>
+                    <div class=" Email">
+                        <label id="labelemail">Email</label>
+                        <p id="emailwarning">*Email should contain @gmail.com</p>
+                    </div>
                 </div>
-                <input type="email" placeholder="Enter your Email" id="emailinput" class="emailinput1" oninput="emailchange()"><br><br>
+                <input type="email" placeholder="Enter your Email" id="emailinput" class="emailinput1"
+                    oninput="emailchange()"><br><br>
                 <p id="emailnone">Email should not be empty</p>
-                </div>
                 <div class="hoverEffect1">
-                <div class="password">
-                    <label>Password</label><br>
-                    <p id="passwarning">*Password should contain atleast 6 character</p>
+                    <div class="password">
+                        <label>Password</label><br>
+                        <p id="passwarning">*Password should contain atleast 6 character</p>
+                    </div>
                 </div>
                 <input type="password" placeholder="******" oninput="passwordchange()" id="passwordinput"><br><br>
-                </div>
                 <p id="passwordnone">password should not be empty</p>
                 <button type="submit" onclick="Validate(event)" class="button">Create account</button><br><br>
             </form>
@@ -49,68 +50,67 @@
         </div>
     </div>
     <script>
-        let logindetails = 
-        [
-            {
-               email:"vignesh@gmail.com",
-               password:"vicky123"
-            },
-            {
-                email:"vijay@gmail.com",
-               password:"vijay123"
-            },
-            {
-                email:"paul@gmail.com",
-               password:"paul123"
-            }
+        let logindetails =
+            [
+                {
+                    email: "vignesh@gmail.com",
+                    password: "vicky123"
+                },
+                {
+                    email: "vijay@gmail.com",
+                    password: "vijay123"
+                },
+                {
+                    email: "paul@gmail.com",
+                    password: "paul123"
+                }
             ]
         function Validate(event) {
             event.preventDefault();
             let email1 = document.getElementById("emailinput").value;
             let password1 = document.getElementById("passwordinput").value;
-            if(email1=="")
-            {
-                document.getElementById("emailnone").style.display="block";
+            if (email1 == "" && password1 == "") {
+                document.getElementById("emailnone").style.display = "block";
+                document.getElementById("passwordnone").style.display = "block";
             }
-            else if(password1=="")
-            {
-                document.getElementById("passwordnone").style.display="block";
+            if (email1 == "") {
+                document.getElementById("emailnone").style.display = "block";
             }
-            else{
-            let count=0;
-            for(let x in logindetails)
-            {
-                
+            else if (password1 == "") {
+                document.getElementById("passwordnone").style.display = "block";
+            }
+            else {
+                let count = 0;
+                for (let x in logindetails) {
+
                     console.log(email1)
-               if(logindetails[x].email==email1&&logindetails[x].password==password1)
-               {
-               alert("you are welcome");
-               count++;
-            break
-               }
-            
-            }
-            if(count==0)
-            {
-               document.getElementById("warning").style.display="block";
-               document.getElementById("emailinput").style.border="1px solid red";
-               document.getElementById("passwordinput").style.border="1px solid red";
+                    if (logindetails[x].email == email1 && logindetails[x].password == password1) {
+                        alert("you are welcome");
+                        count++;
+                        break
+                    }
+
+                }
+                if (count == 0) {
+                    document.getElementById("warning").style.display = "block";
+                    document.getElementById("emailinput").style.border = "1px solid red";
+                    document.getElementById("passwordinput").style.border = "1px solid red";
+                }
             }
         }
-        }
-        
+
 
         function emailchange() {
-    
-            document.getElementById("warning").style.display="none";
-            document.getElementById("emailnone").style.display="none";
-            }
+
+            document.getElementById("warning").style.display = "none";
+            document.getElementById("emailnone").style.display = "none";
+        }
 
 
         function passwordchange() {
-            
-            document.getElementById("warning").style.display="none";
-            document.getElementById("passwordnone").style.display="none";
+
+            document.getElementById("warning").style.display = "none";
+            document.getElementById("passwordnone").style.display = "none";
         }
 
     </script>
