@@ -1,53 +1,113 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>
+
+<head>
+    <title>
         vijay
-        </title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    </head>
-    <body>
-        <div class="container">
-            <div class="left">
-                <img src="image sample.png" width="100%"height="100%">
-            </div>
-            <div class="right">
-                <h1>Create an account</h1>
-                <h3>Let's go started with your 30 day free trail</h3>
-                <form action="submit" method="post" >
+    </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <img src="image sample.png" width="100%" height="100%">
+        </div>
+        <div class="right">
+            <h1>Create an account</h1>
+            <h3>Let's go started with your 30 day free trail</h3>
+            <form action="submit" method="post">
                 <label>Name</label><br>
                 <input type="text" placeholder="Enter your Name" required><br><br>
-                <label>Email</label><br>
-                <input type="email" placeholder="Enter your Email" id="email" required><br><br>
-                <label>Password</label><br>
-                <input type="password" placeholder="******" required id="password"><br><br>
+                <div class=" Email">
+                    <label id="labelemail">Email</label>
+                    <p id="emailwarning">*Email should contain @gmail.com</p>
+                </div>
+                <input type="email" placeholder="Enter your Email" id="emailinput" oninput="emailchange()"><br><br>
+                <p id="emailnone">Email should not be empty</p>
+                <div class="password">
+                    <label>Password</label><br>
+                    <p id="passwarning">*Password should contain atleast 6 character</p>
+                </div>
+                <input type="password" placeholder="******" oninput="passwordchange()" id="passwordinput"><br><br>
                 <button type="submit" onclick="Validate()" class="button">Create account</button><br><br>
-                </form>
-                <button type="submit" class="button1"><i class='fab fa-google'></i>Sign up with Google</button><br>
-                <p class="para">Already have an account?
-                <a href="" class="sample">Log in</a></p>
-            </div>
+            </form>
+            <p id="warning">Email or password is wrong</p>
+            <button type="submit" class="button1"><i class='fab fa-google'></i>Sign up with Google</button><br>
+            <p class="para">Already have an account?
+                <a href="" class="sample">Log in</a>
+            </p>
         </div>
-        <script>
-            let samplemail="Vijay@gmail.com"
-            let samplepass="1234";
-           function  Validate()
+    </div>
+    <script>
+        let logindetails = 
+        [
             {
-                event.preventDefault();
-                let email1=document.getElementById("email").value;
-                let password=document.getElementById("password").value;
-                if(samplemail===email1 && samplepass===password)
-                alert("You are Welcome");
-            else if(email1=="" || password=="")
-               alert("Enter Email or Password...")
-                else
-                alert("Email OR Password is Wrong...");
-                 }
+               email:"vignesh@gmail.com",
+               password:"vicky123"
+            },
+            {
+                email:"vijay@gmail.com",
+               password:"vijay123"
+            },
+            {
+                email:"paul@gmail.com",
+               password:"paul123"
+            }
+            ]
+        function Validate() {
+            event.preventDefault();
+            let email1 = document.getElementById("emailinput").value;
+            let password1 = document.getElementById("passwordinput").value;
+            if(email1=="")
+            {
+                document.getElementById("emailnone").style.display="block";
+            }
+            else if(password1="")
+            {
 
-        </script>
-    </body>
+            }
+            else{
+            let count=0;
+            for(let x in logindetails)
+            {
+                
+                    console.log(email1)
+               if(logindetails[x].email==email1&&logindetails[x].password==password1)
+               {
+               alert("you are welcome");
+               count++;
+            break
+               }
+            
+            }
+            if(count==0)
+            {
+               document.getElementById("warning").style.display="block";
+               document.getElementById("emailinput").style.border="1px solid red";
+               document.getElementById("passwordinput").style.border="1px solid red";
+            }
+        }
+        }
+        
+
+        function emailchange() {
+            document.getElementById("emailwarning").style.display = "none";
+            document.getElementById("warning").style.display="none";
+            document.getElementById("emailnone").style.display="none";
+            }
+        }
+
+        function passwordchange() {
+            document.getElementById("passwarning").style.display = "none";
+            document.getElementById("warning").style.display="none";
+        }
+
+    </script>
+</body>
+
 </html>
