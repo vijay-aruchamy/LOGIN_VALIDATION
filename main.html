@@ -23,18 +23,23 @@
             <form action="submit" method="post">
                 <label>Name</label><br>
                 <input type="text" placeholder="Enter your Name" required><br><br>
+                <div class="hoverEffect">
                 <div class=" Email">
                     <label id="labelemail">Email</label>
                     <p id="emailwarning">*Email should contain @gmail.com</p>
                 </div>
-                <input type="email" placeholder="Enter your Email" id="emailinput" oninput="emailchange()"><br><br>
+                <input type="email" placeholder="Enter your Email" id="emailinput" class="emailinput1" oninput="emailchange()"><br><br>
                 <p id="emailnone">Email should not be empty</p>
+                </div>
+                <div class="hoverEffect1">
                 <div class="password">
                     <label>Password</label><br>
                     <p id="passwarning">*Password should contain atleast 6 character</p>
                 </div>
                 <input type="password" placeholder="******" oninput="passwordchange()" id="passwordinput"><br><br>
-                <button type="submit" onclick="Validate()" class="button">Create account</button><br><br>
+                </div>
+                <p id="passwordnone">password should not be empty</p>
+                <button type="submit" onclick="Validate(event)" class="button">Create account</button><br><br>
             </form>
             <p id="warning">Email or password is wrong</p>
             <button type="submit" class="button1"><i class='fab fa-google'></i>Sign up with Google</button><br>
@@ -59,7 +64,7 @@
                password:"paul123"
             }
             ]
-        function Validate() {
+        function Validate(event) {
             event.preventDefault();
             let email1 = document.getElementById("emailinput").value;
             let password1 = document.getElementById("passwordinput").value;
@@ -67,9 +72,9 @@
             {
                 document.getElementById("emailnone").style.display="block";
             }
-            else if(password1="")
+            else if(password1=="")
             {
-
+                document.getElementById("passwordnone").style.display="block";
             }
             else{
             let count=0;
@@ -96,15 +101,16 @@
         
 
         function emailchange() {
-            document.getElementById("emailwarning").style.display = "none";
+    
             document.getElementById("warning").style.display="none";
             document.getElementById("emailnone").style.display="none";
             }
-        }
+
 
         function passwordchange() {
-            document.getElementById("passwarning").style.display = "none";
+            
             document.getElementById("warning").style.display="none";
+            document.getElementById("passwordnone").style.display="none";
         }
 
     </script>

@@ -53,6 +53,13 @@
     margin: 0;
     color: red;
     font-size: 10px;
+    display: none;
+}
+.hoverEffect:hover #emailwarning{
+    display: block;
+}
+.hoverEffect1:hover #passwarning{
+    display: block;
 }
 .password
 {
@@ -63,6 +70,7 @@
     margin:0;
     color: red;
     font-size: 10px;
+    display: none;
 }
 #warning
 {
@@ -74,6 +82,13 @@
 #emailnone
 {
     display: none;
+    margin-top: 0;
+    color: red;
+    font-size: 10px;
+}
+#passwordnone
+{
+    display: none; 
     margin-top: 0;
     color: red;
     font-size: 10px;
