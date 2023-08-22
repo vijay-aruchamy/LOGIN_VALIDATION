@@ -60,7 +60,7 @@
                     <p id="validpassword"> please enter valid password</p>
                     <p id="warning">Email or password is wrong</p>
                 </div>
-                <button type="submit" onclick="Validate(event)" id="signinbutton" class="button">Create account</button>
+                <button type="submit" onclick="Validate(event)"  class="button">Log In</button>
             </form>
             <button type="submit" class="button1" onclick="signup()"><i class="fa fa-google"></i>
                 Sign up </button>
@@ -91,6 +91,13 @@
             ]
         function Validate(event) {
             event.preventDefault();
+            if(document.getElementById("signup1").style.display=="block")
+            {
+                document.getElementById("signup").style.display="none";
+            document.getElementById("signup1").style.display="none";
+            document.getElementById("signin").style.display="block";
+            }
+            else{
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
             let name=document.getElementById("nameinput").value;
             let email1 = document.getElementById("emailinput").value;
@@ -136,6 +143,7 @@
 
             }
         }
+    }
 
 
         function emailchange() {
@@ -176,7 +184,7 @@
             document.getElementById("signup").style.display="block";
             document.getElementById("signup1").style.display="block";
             document.getElementById("signin").style.display="none";
-            document.getElementById("signinbutton").style.display="none";
+            
             }
         }
 
