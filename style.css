@@ -10,7 +10,7 @@ body{
 .container
 {
      position :fixed; 
-    width:90%;
+    width:95%;
     height:90%;
     display: flex; 
     
@@ -54,6 +54,7 @@ body{
 {
     font-size: 10px;
     padding-left: 20px;
+    margin-bottom: 50px;
 }
 .Email
 {
@@ -77,6 +78,7 @@ body{
 .password
 {
     display: flex;
+
 }
 #passwarning
 {
@@ -101,7 +103,7 @@ body{
     margin-top: 0;
     color: red;
     font-size: 10px;
-    /* padding-bottom: 15px; */
+  
    
 }
 #passwordnone
@@ -132,6 +134,14 @@ body{
     font-size: 10px;
 
 }
+#validpassword
+{
+     display: none;  
+    margin-top: 0;
+    color: red;
+    font-size: 10px;
+
+}
 #successbox
 {
      display: none; 
@@ -154,14 +164,17 @@ body{
 #emailinput
 {
     margin-top: 15px;
+ 
 }
 #passwordinput
 {
     margin-top: 15px;
+
 }
 #nameinput
 {
     margin-top: 15px;
+
 }
 
 .emailform,.passwordform
