@@ -29,7 +29,8 @@
             <h3>Let's go started with your 30 day free trail</h3>
             <form action="submit" method="post">
                 <label>Name</label><br>
-                <input type="text" placeholder="Enter your Name" required><br><br>
+                <input type="text" placeholder="Enter your Name" required id="nameinput"><br><br>
+                <div class="emailform">
                 <div class="Email">
                     <label id="labelemail">Email</label>
                     <div class="hoverEffect">
@@ -38,9 +39,11 @@
                     </div>
                 </div>
                 <input type="email" placeholder="Enter your Email" id="emailinput" class="emailinput1"
-                    oninput="emailchange()"><br><br>
+                    oninput="emailchange()">
                 <p id="emailnone">Email should not be empty</p>
                 <p id="validemail"> please enter valid email</p>
+                </div>
+                <div class="passwordform">
                 <div class="password">
                     <label>Password</label><br>
                     <div class="hoverEffect1">
@@ -48,10 +51,11 @@
                         <p id="passwarning">*Password should contain atleast 6 character</p>
                     </div>
                 </div>
-                <input type="password" placeholder="******" oninput="passwordchange()" id="passwordinput"><br><br>
+                <input type="password" placeholder="******" oninput="passwordchange()" id="passwordinput">
                 <p id="passwordnone">password should not be empty</p>
                 <p id="warning">Email or password is wrong</p>
-                <button type="submit" onclick="Validate(event)" class="button">Create account</button><br><br>
+                </div>
+                <button type="submit" onclick="Validate(event)" class="button">Create account</button>
             </form>
             <button type="submit" class="button1"><i class="fa fa-google"></i>
                 Sign up with Google</button><br>
@@ -82,18 +86,20 @@
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
             let email1 = document.getElementById("emailinput").value;
             let password1 = document.getElementById("passwordinput").value;
-            if (email1 == "" && password1 == "") {
-                document.getElementById("emailnone").style.display = "block";
-                document.getElementById("passwordnone").style.display = "block";
-            }
+           
             if (email1 == "") {
                 document.getElementById("emailnone").style.display = "block";
             }
-            else if (password1 == "") {
+            else if (!email1.match(emailPattern)) {
                 document.getElementById("passwordnone").style.display = "block";
             }
-            else if (!email1.match(emailPattern)) {
-                document.getElementById("validemail").style.display = "block";
+
+
+            if (password1 == "") {
+                document.getElementById("passwordnone").style.display = "block";
+            }
+            else if (password1.length<6) {
+                document.getElementById("passwordnone").style.display = "block";
             }
             
             else {
@@ -134,7 +140,7 @@
         }
         function closesucessbox()
         {
-            console.log("hi22")
+            
            document.getElementById("successbox").style.display="none";
         }
 
