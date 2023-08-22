@@ -47,7 +47,7 @@
 }
 .Email
 {
- display: flex;
+  display: flex; 
 }
 #emailwarning
 {
@@ -55,7 +55,7 @@
     color:lightslategray;
     border: 1px solid lightgrey;
     font-size: 10px;
-    display: none;
+     display: none; 
 }
 .hoverEffect:hover #emailwarning{
     display: block;
@@ -96,3 +96,48 @@
     color: red;
     font-size: 10px;
 }
+#info1
+{
+    padding-left: 105px;
+    font-size: 18px;
+    color: lightblue;
+}
+#info2
+{
+    padding-left: 80px;
+    font-size: 18px;
+    color: lightblue;
+}
+#validemail
+{
+     display: none;  
+    margin-top: 0;
+    color: red;
+    font-size: 10px;
+
+}
+#successbox
+{
+     display: none; 
+    text-align: center;
+    height: 146px;
+    width: 336px;
+    border: 1px solid;
+    position: absolute;
+    z-index: 1;
+   margin-left: 500px;
+}
+#loginimage
+{
+    image-orientation: inherit;
+}
+#closebutton
+{
+    z-index: 1;
+}
+
+/* #passwordinput
+{
+    margin-top: 20px;
+    
+} */

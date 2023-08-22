@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 
@@ -16,37 +19,46 @@
     <div class="container">
         <div class="left">
             <img src="image sample.png" width="100%" height="100%">
-        </div>
+            </div>
+        <div id="successbox">
+            <img src="login.png" id="loginimage">
+              <button onclick="closesucessbox()"><i class="fa fa-close" style="font-size:24px" id="closebutton"></i></button>
+            </div>
         <div class="right">
             <h1>Create an account</h1>
             <h3>Let's go started with your 30 day free trail</h3>
             <form action="submit" method="post">
                 <label>Name</label><br>
                 <input type="text" placeholder="Enter your Name" required><br><br>
-                <div class="hoverEffect">
-                    <div class=" Email">
-                        <label id="labelemail">Email</label>
+                <div class="Email">
+                    <label id="labelemail">Email</label>
+                    <div class="hoverEffect">
+                        <i class="fa fa-info-circle" id="info1"></i>
                         <p id="emailwarning">*Email should contain @gmail.com</p>
                     </div>
                 </div>
                 <input type="email" placeholder="Enter your Email" id="emailinput" class="emailinput1"
                     oninput="emailchange()"><br><br>
                 <p id="emailnone">Email should not be empty</p>
-                <div class="hoverEffect1">
-                    <div class="password">
-                        <label>Password</label><br>
+                <p id="validemail"> please enter valid email</p>
+                <div class="password">
+                    <label>Password</label><br>
+                    <div class="hoverEffect1">
+                        <i class="fa fa-info-circle" id="info2"></i>
                         <p id="passwarning">*Password should contain atleast 6 character</p>
                     </div>
                 </div>
                 <input type="password" placeholder="******" oninput="passwordchange()" id="passwordinput"><br><br>
                 <p id="passwordnone">password should not be empty</p>
+                <p id="warning">Email or password is wrong</p>
                 <button type="submit" onclick="Validate(event)" class="button">Create account</button><br><br>
             </form>
-            <p id="warning">Email or password is wrong</p>
-            <button type="submit" class="button1"><i class='fab fa-google'></i>Sign up with Google</button><br>
+            <button type="submit" class="button1"><i class="fa fa-google"></i>
+                Sign up with Google</button><br>
             <p class="para">Already have an account?
                 <a href="" class="sample">Log in</a>
             </p>
+
         </div>
     </div>
     <script>
@@ -67,6 +79,7 @@
             ]
         function Validate(event) {
             event.preventDefault();
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
             let email1 = document.getElementById("emailinput").value;
             let password1 = document.getElementById("passwordinput").value;
             if (email1 == "" && password1 == "") {
@@ -79,23 +92,29 @@
             else if (password1 == "") {
                 document.getElementById("passwordnone").style.display = "block";
             }
+            else if (!email1.match(emailPattern)) {
+                document.getElementById("validemail").style.display = "block";
+            }
+            
             else {
-                let count = 0;
+                let emailpass = 0;
+                let email=0;
+                let pass=0;
                 for (let x in logindetails) {
-
-                    console.log(email1)
-                    if (logindetails[x].email == email1 && logindetails[x].password == password1) {
-                        alert("you are welcome");
-                        count++;
+                      
+                     if (logindetails[x].email == email1 && logindetails[x].password == password1) {
+                        document.getElementById("successbox").style.display = "block";
+                        emailpass++;
                         break
                     }
+                     
 
                 }
-                if (count == 0) {
-                    document.getElementById("warning").style.display = "block";
-                    document.getElementById("emailinput").style.border = "1px solid red";
-                    document.getElementById("passwordinput").style.border = "1px solid red";
-                }
+                
+
+                if(emailpass==0)
+                document.getElementById("warning").style.display = "block";
+
             }
         }
 
@@ -104,6 +123,7 @@
 
             document.getElementById("warning").style.display = "none";
             document.getElementById("emailnone").style.display = "none";
+            document.getElementById("validemail").style.display = "none";
         }
 
 
@@ -111,6 +131,11 @@
 
             document.getElementById("warning").style.display = "none";
             document.getElementById("passwordnone").style.display = "none";
+        }
+        function closesucessbox()
+        {
+            console.log("hi22")
+           document.getElementById("successbox").style.display="none";
         }
 
     </script>
