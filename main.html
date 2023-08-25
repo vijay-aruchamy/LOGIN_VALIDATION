@@ -25,16 +25,21 @@
             <button onclick="closesucessbox()"><i class="fa fa-close" style="font-size:24px"
                     id="closebutton"></i></button>
         </div>
+        <div id="successbox1">
+            <img src="signup.jpg" id="signupimage">
+            <button onclick="closesucessbox1()"><i class="fa fa-close" style="font-size:24px"
+                    id="closebutton"></i></button>
+        </div>
         <div class="right">
             <h1 id="signin">Login Page</h1>
             <h1 id="signup1">Create an account</h1>
             <h3>Let's go started with your 30 day free trail</h3>
-            <form action="submit" method="post">
+            <form action="submit" method="post" id="form">
                 <div id="signup">
-                <label>Name</label><br>
-                <input type="text" placeholder="Enter your Name" required id="nameinput"><br><br>
+                    <label>Name</label><br>
+                    <input type="text" placeholder="Enter your Name" required id="nameinput"><br><br>
                 </div>
-                <div class="emailform" >
+                <div class="emailform">
                     <div class="Email">
                         <label id="labelemail">User Name</label>
                         <div class="hoverEffect">
@@ -60,11 +65,11 @@
                     <p id="validpassword"> please enter valid password</p>
                     <p id="warning">Email or password is wrong</p>
                 </div>
-                <button type="submit" onclick="Validate(event)"  class="button">Log In</button>
+                <button type="submit" onclick="Validate(event)" class="button">Log In</button>
             </form>
             <button type="submit" class="button1" onclick="signup()"><i class="fa fa-google"></i>
                 Sign up </button>
-            <p class="para" >Already have an account?
+            <p class="para">Already have an account?
                 <a href="" class="sample">Log in</a>
             </p>
 
@@ -75,75 +80,73 @@
             [
                 {
                     name: "vignesh",
-                    username:"vignesh@gmail.com",
+                    username: "vignesh@gmail.com",
                     password: "vicky123",
                 },
                 {
                     name: "vijay",
-                    username:"vijay@gmail.com",
+                    username: "vijay@gmail.com",
                     password: "vijay123",
                 },
                 {
                     email: "paul",
-                    username:"paul",
+                    username: "paul",
                     password: "paul123"
                 }
             ]
         function Validate(event) {
             event.preventDefault();
-            if(document.getElementById("signup1").style.display=="block")
-            {
-                document.getElementById("signup").style.display="none";
-            document.getElementById("signup1").style.display="none";
-            document.getElementById("signin").style.display="block";
+            if (document.getElementById("signup1").style.display == "block") {
+                document.getElementById("passwordinput").value = "";
+                document.getElementById("signup").style.display = "none";
+                document.getElementById("signup1").style.display = "none";
+                document.getElementById("signin").style.display = "block";
             }
-            else{
-            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-            let name=document.getElementById("nameinput").value;
-            let email1 = document.getElementById("emailinput").value;
-            let password1 = document.getElementById("passwordinput").value;
-            let emailtrue = true;
-            let passtrue = true;
+            else {
+                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+                let name = document.getElementById("nameinput").value;
+                let email1 = document.getElementById("emailinput").value;
+                let password1 = document.getElementById("passwordinput").value;
+                let emailtrue = true;
+                let passtrue = true;
 
-            if (email1 == "") {
-                document.getElementById("emailnone").style.display = "block";
-                emailtrue = false;
-            }
-            else if (!email1.match(emailPattern)) {
-                document.getElementById("validemail").style.display = "block";
-                emailtrue = false;
-            }
+                if (email1 == "") {
+                    document.getElementById("emailnone").style.display = "block";
+                    emailtrue = false;
+                }
+                else if (!email1.match(emailPattern)) {
+                    document.getElementById("validemail").style.display = "block";
+                    emailtrue = false;
+                }
 
 
-            if (password1 == "") {
-                document.getElementById("passwordnone").style.display = "block";
-                passtrue = false;
-            }
-            else if (password1.length < 6) {
-                document.getElementById("validpassword").style.display = "block";
-                passtrue = false;
-            }
+                if (password1 == "") {
+                    document.getElementById("passwordnone").style.display = "block";
+                    passtrue = false;
+                }
+                else if (password1.length < 6) {
+                    document.getElementById("validpassword").style.display = "block";
+                    passtrue = false;
+                }
 
-            if (emailtrue == true && passtrue == true) {
-                let emailpass = 0;
-                for (let x in logindetails) {
-
-                    if (logindetails[x].email == email1 && logindetails[x].password == password1) {
-                        document.getElementById("successbox").style.display = "block";
-                        emailpass++;
-                        break
+                if (emailtrue == true && passtrue == true) {
+                    let emailpass = 0;
+                    for (let x in logindetails) {
+                        console.log(logindetails[x].username);
+                        if (logindetails[x].username == email1 && logindetails[x].password == password1) {
+                            document.getElementById("successbox").style.display = "block";
+                            emailpass++;
+                            break
+                        }
                     }
+                    if (emailpass == 0)
+                        document.getElementById("warning").style.display = "block";
+
 
 
                 }
-                if (emailpass == 0)
-                    document.getElementById("warning").style.display = "block";
-
-
-
             }
         }
-    }
 
 
         function emailchange() {
@@ -164,27 +167,57 @@
 
             document.getElementById("successbox").style.display = "none";
         }
-        function signup()
-        {
-            let name=document.getElementById("nameinput").value;
+        function closesucessbox1() {
+
+            document.getElementById("successbox1").style.display = "none";
+        }
+        function signup() {
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+
+            let name = document.getElementById("nameinput").value;
             let email1 = document.getElementById("emailinput").value;
             let password1 = document.getElementById("passwordinput").value;
-            if(document.getElementById("signup1").style.display=="block")
-            { 
-               logindetails.push({name:name,
-                username:email1,
-                password:password1
+            if (document.getElementById("signup1").style.display == "block") {
+                let emailtrue = true;
+                let passtrue = true;
+                if (email1 == "") {
+                    document.getElementById("emailnone").style.display = "block";
+                    emailtrue = false;
+                }
+                else if (!email1.match(emailPattern)) {
 
-               })
+                    document.getElementById("validemail").style.display = "block";
+                    emailtrue = false;
+                }
 
-                
+
+                if (password1 == "") {
+                    document.getElementById("passwordnone").style.display = "block";
+                    passtrue = false;
+                }
+                else if (password1.length < 6) {
+
+                    document.getElementById("validpassword").style.display = "block";
+                    passtrue = false;
+                }
+
+                if (emailtrue == true && passtrue == true) {
+                    logindetails.push({
+                        name: name,
+                        username: email1,
+                        password: password1
+
+                    })
+                    document.getElementById("successbox1").style.display = "block";
+
+                }
 
             }
-            else{
-            document.getElementById("signup").style.display="block";
-            document.getElementById("signup1").style.display="block";
-            document.getElementById("signin").style.display="none";
-            
+            else {
+                document.getElementById("signup").style.display = "block";
+                document.getElementById("signup1").style.display = "block";
+                document.getElementById("signin").style.display = "none";
+
             }
         }
 
