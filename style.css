@@ -1,4 +1,4 @@
-body{
+body {
     display: grid;
     place-items: center;
     height: 100vh;
@@ -7,34 +7,33 @@ body{
 
 
 
-.container
-{
-     position :fixed; 
-    width:95%;
-    height:90%;
-    display: flex; 
-    
+.container {
+    position: fixed;
+    width: 95%;
+    height: 90%;
+    display: flex;
 
-    
+
+
 }
-.left
-{
-    width:100%;
-     height: 100%; 
+
+.left {
+    width: 100%;
+    height: 100%;
 }
-.right
-{
+
+.right {
     font-family: 'Open Sans', sans-serif;
     display: flex;
     flex-direction: column;
-    width:70%;
-    height:100%;
+    width: 70%;
+    height: 100%;
     padding-left: 40px;
     background-color: white;
 
 }
-.button
-{
+
+.button {
     padding-left: 42px;
     padding-right: 42px;
     padding-top: 5px;
@@ -42,150 +41,168 @@ body{
     width: 50%;
     margin-bottom: 20px;
 }
-.button1
-{
+
+.button1 {
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 5px;
     padding-bottom: 5px;
     width: 50%;
 }
-.para
-{
+
+.para {
     font-size: 10px;
     padding-left: 20px;
     margin-bottom: 50px;
 }
-.Email
-{
-  display: flex; 
+
+.Email {
+    display: flex;
 }
-#emailwarning
-{
+
+#emailwarning {
     position: absolute;
     margin: 0;
-    color:lightslategray;
+    color: lightslategray;
     border: 1px solid lightgrey;
     font-size: 10px;
-     display: none; 
+    display: none;
 }
-.hoverEffect:hover #emailwarning{
+
+.hoverEffect:hover #emailwarning {
     display: block;
 }
-.hoverEffect1:hover #passwarning{
+
+.hoverEffect1:hover #passwarning {
     display: block;
 }
-.password
-{
+
+.password {
     display: flex;
 
 }
-#passwarning
-{
-    margin:0;
-    color:lightslategray;
+
+#passwarning {
+    margin: 0;
+    color: lightslategray;
     border: 1px solid lightgrey;
     font-size: 10px;
-    display: none; 
+    display: none;
     position: absolute;
 }
-#warning
-{
+
+#warning {
     display: none;
     font-size: 10px;
     color: red;
     margin-top: 0;
     position: absolute;
 }
-#emailnone
-{
+
+#emailnone {
     display: none;
     margin-top: 0;
     color: red;
     font-size: 10px;
-  
-   
+
+
 }
-#passwordnone
-{
-    display: none; 
+
+#passwordnone {
+    display: none;
     margin-top: 0;
     color: red;
     font-size: 10px;
     position: absolute;
 }
-#info1
-{
-    padding-left: 105px;
+
+#info1 {
+    padding-left: 70px;
     font-size: 18px;
     color: lightblue;
 }
-#info2
-{
+
+#info2 {
     padding-left: 80px;
     font-size: 18px;
     color: lightblue;
 }
-#validemail
-{
-     display: none;  
+
+#validemail {
+    display: none;
     margin-top: 0;
     color: red;
     font-size: 10px;
 
 }
-#validpassword
-{
-     display: none;  
+
+#validpassword {
+    display: none;
     margin-top: 0;
     color: red;
     font-size: 10px;
 
 }
-#successbox
-{
-     display: none; 
+
+#successbox {
+    display: none;
     text-align: center;
     height: 146px;
     width: 336px;
     border: 1px solid;
     position: absolute;
     z-index: 1;
-   margin-left: 500px;
+    margin-left: 500px;
 }
-#loginimage
-{
+
+#loginimage {
     image-orientation: inherit;
 }
-#closebutton
-{
+
+#successbox1 {
+    display: none;
+    text-align: center;
+    height: 146px;
+    width: 336px;
+    border: 1px solid;
+    position: absolute;
+    z-index: 1;
+    margin-left: 500px;
+}
+
+#signupimage {
+    height: 100%;
+    width: 100%;
+}
+
+#closebutton {
     z-index: 1;
 }
-#emailinput
-{
-    margin-top: 15px;
- 
-}
-#passwordinput
-{
-    margin-top: 15px;
 
-}
-#nameinput
-{
+#emailinput {
     margin-top: 15px;
 
 }
 
-.emailform,.passwordform
-{
+#passwordinput {
+    margin-top: 15px;
+
+}
+
+#nameinput {
+    margin-top: 15px;
+
+}
+
+.emailform,
+.passwordform {
     height: 80px;
 }
-#signup
-{
-     display: none; 
+
+#signup {
+    display: none;
 }
-#signup1
-{
-     display: none; 
+
+#signup1 {
+    display: none;
 }
