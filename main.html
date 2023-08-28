@@ -35,21 +35,23 @@
             <h1 id="signup1">Create an account</h1>
             <h3>Let's go started with your 30 day free trail</h3>
             <form action="submit" method="post" id="form">
-                <div id="signup">
-                    <label>Name</label><br>
-                    <input type="text" placeholder="Enter your Name" required id="nameinput"><br><br>
+                <div>
+                    <label>UserName</label><br>
+                    <input type="text" placeholder="Enter your Name" onchange="getname(event)" oninput="namechange()" id="nameinput">
+                    <p id="Usernone">username should not be empty</p>
+                    <p id="validuser"> userName already Exists</p>
                 </div>
-                <div class="emailform">
+                <div class="emailform" id="signup">
                     <div class="Email">
-                        <label id="labelemail">User Name</label>
+                        <label id="labelemail">Email</label>
                         <div class="hoverEffect">
                             <i class="fa fa-info-circle" id="info1"></i>
-                            <p id="emailwarning">*UserName should contain @gmail.com</p>
+                            <p id="emailwarning">*Email should contain @gmail.com</p>
                         </div>
                     </div>
                     <input type="email" placeholder="Enter your Email" id="emailinput" class="emailinput1"
-                        oninput="emailchange()">
-                    <p id="emailnone">UserName should not be empty</p>
+                        oninput="emailchange()" onchange="getemail(event)">
+                    <p id="emailnone">Email should not be empty</p>
                     <p id="validemail"> please enter valid UserName</p>
                 </div>
                 <div class="passwordform">
@@ -60,7 +62,7 @@
                             <p id="passwarning">*Password should contain atleast 6 character</p>
                         </div>
                     </div>
-                    <input type="password" placeholder="******" oninput="passwordchange()" id="passwordinput">
+                    <input type="password" placeholder="******" oninput="passwordchange()" onchange="getpass(event)" id="passwordinput">
                     <p id="passwordnone">password should not be empty</p>
                     <p id="validpassword"> please enter valid password</p>
                     <p id="warning">Email or password is wrong</p>
@@ -76,21 +78,40 @@
         </div>
     </div>
     <script>
+       
+        let name="";
+        let password1="";
+        let email1="";
+
+
+        function getname(event)
+        {
+            name=event.target.value;
+        }
+        function getemail(event)
+        {
+            email1=event.target.value;
+        }
+        function getpass(event)
+        {
+            password1=event.target.value;
+        }
+
         let logindetails =
             [
                 {
-                    name: "vignesh",
-                    username: "vignesh@gmail.com",
+                    userName: "vignesh",
+                    Email: "vignesh@gmail.com",
                     password: "vicky123",
                 },
                 {
-                    name: "vijay",
-                    username: "vijay@gmail.com",
+                    userName: "vijay",
+                    Email: "vijay@gmail.com",
                     password: "vijay123",
                 },
                 {
-                    email: "paul",
-                    username: "paul",
+                    userName: "paul",
+                    Email: "paul",
                     password: "paul123"
                 }
             ]
@@ -104,36 +125,29 @@
             }
             else {
                 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-                let name = document.getElementById("nameinput").value;
-                let email1 = document.getElementById("emailinput").value;
-                let password1 = document.getElementById("passwordinput").value;
-                let emailtrue = true;
-                let passtrue = true;
+                
+                let condition = true;
+                
+                if (name == "") {
+                    document.getElementById("Usernone").style.display = "block";
+                    condition = false;
+                }
 
-                if (email1 == "") {
-                    document.getElementById("emailnone").style.display = "block";
-                    emailtrue = false;
-                }
-                else if (!email1.match(emailPattern)) {
-                    document.getElementById("validemail").style.display = "block";
-                    emailtrue = false;
-                }
 
 
                 if (password1 == "") {
                     document.getElementById("passwordnone").style.display = "block";
-                    passtrue = false;
+                    condition = false;
                 }
                 else if (password1.length < 6) {
                     document.getElementById("validpassword").style.display = "block";
-                    passtrue = false;
+                    condition = false;
                 }
 
-                if (emailtrue == true && passtrue == true) {
+                if (condition) {
                     let emailpass = 0;
-                    for (let x in logindetails) {
-                        console.log(logindetails[x].username);
-                        if (logindetails[x].username == email1 && logindetails[x].password == password1) {
+                    for (let x of logindetails) {
+                        if (x.userName == name && x.password == password1) {
                             document.getElementById("successbox").style.display = "block";
                             emailpass++;
                             break
@@ -149,6 +163,12 @@
         }
 
 
+        function namechange() {
+
+            document.getElementById("warning").style.display = "none";
+            document.getElementById("Usernone").style.display = "none";
+            document.getElementById("validuser").style.display = "none";
+        }
         function emailchange() {
 
             document.getElementById("warning").style.display = "none";
@@ -174,37 +194,52 @@
         function signup() {
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
 
-            let name = document.getElementById("nameinput").value;
-            let email1 = document.getElementById("emailinput").value;
-            let password1 = document.getElementById("passwordinput").value;
+           
             if (document.getElementById("signup1").style.display == "block") {
-                let emailtrue = true;
-                let passtrue = true;
+                let condition = true;
+                
+
+                if (name == "") {
+                    document.getElementById("Usernone").style.display = "block";
+                    conditiom = false;
+                }
+                else {
+                    for (let x of logindetails) {
+                        if (x.userName == name)
+                        {
+                            document.getElementById("validuser").style.display = "block";
+                            condition=false;
+                        break;
+                        }
+                    }
+
+                }
+
                 if (email1 == "") {
                     document.getElementById("emailnone").style.display = "block";
-                    emailtrue = false;
+                    condition = false;
                 }
                 else if (!email1.match(emailPattern)) {
 
                     document.getElementById("validemail").style.display = "block";
-                    emailtrue = false;
+                    condition = false;
                 }
 
 
                 if (password1 == "") {
                     document.getElementById("passwordnone").style.display = "block";
-                    passtrue = false;
+                    condition = false;
                 }
                 else if (password1.length < 6) {
 
                     document.getElementById("validpassword").style.display = "block";
-                    passtrue = false;
+                    condition = false;
                 }
 
-                if (emailtrue == true && passtrue == true) {
+                if (condition==true) {
                     logindetails.push({
-                        name: name,
-                        username: email1,
+                        userName: name,
+                        Email: email1,
                         password: password1
 
                     })
@@ -219,6 +254,7 @@
                 document.getElementById("signin").style.display = "none";
                 document.getElementById("warning").style.display = "none";
                 document.getElementById("emailnone").style.display = "none";
+                document.getElementById("Usernone").style.display = "none";
                 document.getElementById("validemail").style.display = "none";
                 document.getElementById("passwordnone").style.display = "none";
                 document.getElementById("validpassword").style.display = "none";

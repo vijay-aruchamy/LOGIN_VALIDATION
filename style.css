@@ -58,6 +58,7 @@ body {
 
 .Email {
     display: flex;
+   
 }
 
 #emailwarning {
@@ -107,6 +108,22 @@ body {
 
 
 }
+
+#Usernone {
+    display: none;
+    margin-top: 0;
+    color: red;
+    font-size: 10px;
+    position: absolute;
+}
+#validuser {
+    display: none;
+    margin-top: 0;
+    color: red;
+    font-size: 10px;
+
+}
+
 
 #passwordnone {
     display: none;
@@ -197,6 +214,7 @@ body {
 .emailform,
 .passwordform {
     height: 80px;
+    padding-top: 20px;
 }
 
 #signup {
