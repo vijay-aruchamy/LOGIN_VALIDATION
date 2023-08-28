@@ -53,7 +53,7 @@
                     <input type="email" placeholder="Enter your Email" id="emailinput" class="emailinput1"
                         oninput="emailchange()" onchange="getemail(event)">
                     <p id="emailnone">Email should not be empty</p>
-                    <p id="validemail"> please enter valid UserName</p>
+                    <p id="validemail"> please enter valid Email</p>
                 </div>
                 <div class="passwordform">
                     <div class="password">
@@ -133,6 +133,10 @@
                 document.getElementById("validuser").style.display = "none";
                 document.getElementById("buttonlogin").style.display = "block";
                 document.getElementById("buttonlogin1").style.display = "none";
+                Usernone.style.display = "none";
+                validpassword.style.display = "none";
+                document.getElementById("form").reset();
+                passwordnone.style.display = "none";
 
             
         }
