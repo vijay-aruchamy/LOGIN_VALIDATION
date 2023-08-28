@@ -37,7 +37,8 @@
             <form action="submit" method="post" id="form">
                 <div>
                     <label>UserName</label><br>
-                    <input type="text" placeholder="Enter your Name" onchange="getname(event)" oninput="namechange()" id="nameinput">
+                    <input type="text" placeholder="Enter your Name" onchange="getname(event)" oninput="namechange()"
+                        id="nameinput">
                     <p id="Usernone">username should not be empty</p>
                     <p id="validuser"> userName already Exists</p>
                 </div>
@@ -62,15 +63,18 @@
                             <p id="passwarning">*Password should contain atleast 6 character</p>
                         </div>
                     </div>
-                    <input type="password" placeholder="******" oninput="passwordchange()" onchange="getpass(event)" id="passwordinput">
+                    <input type="password" placeholder="******" oninput="passwordchange()" onchange="getpass(event)"
+                        id="passwordinput">
                     <p id="passwordnone">password should not be empty</p>
                     <p id="validpassword"> please enter valid password</p>
-                    <p id="warning">Email or password is wrong</p>
+                    <p id="warning">Not a user want to signup..... </p>
                 </div>
-                <button type="submit" onclick="Validate(event)" class="button">Log In</button>
+                <button type="submit" onclick="Validate(event)" class="button" id="buttonlogin">Log In</button>
             </form>
-            <button type="submit" class="button1" onclick="signup()"><i class="fa fa-google"></i>
+           
+                   <button type="submit" class="button1" onclick="signup(event)"><i class="fa fa-google"></i>
                 Sign up </button>
+                <button type="submit" onclick="login(event)" class="button" id="buttonlogin1">Log In</button>
             <p class="para">Already have an account?
                 <a href="" class="sample">Log in</a>
             </p>
@@ -78,24 +82,27 @@
         </div>
     </div>
     <script>
-       
-        let name="";
-        let password1="";
-        let email1="";
+
+        let name = "";
+        let password1 = "";
+        let email1 = "";
 
 
-        function getname(event)
-        {
-            name=event.target.value;
+        function getname(event) {
+            name = event.target.value;
         }
-        function getemail(event)
-        {
-            email1=event.target.value;
+        function getemail(event) {
+            email1 = event.target.value;
         }
-        function getpass(event)
-        {
-            password1=event.target.value;
+        function getpass(event) {
+            password1 = event.target.value;
         }
+        let warning=document.getElementById("warning");
+        let emailnone=document.getElementById("emailnone");
+        let passwordnone=document.getElementById("passwordnone");
+        let Usernone=document.getElementById("Usernone");
+        let validemail=document.getElementById("validemail");
+        let validpassword=document.getElementById("validpassword");
 
         let logindetails =
             [
@@ -115,32 +122,40 @@
                     password: "paul123"
                 }
             ]
-        function Validate(event) {
-            event.preventDefault();
-            if (document.getElementById("signup1").style.display == "block") {
+            function login(event)
+            {
+                event.preventDefault();
                 document.getElementById("passwordinput").value = "";
                 document.getElementById("signup").style.display = "none";
                 document.getElementById("signup1").style.display = "none";
                 document.getElementById("signin").style.display = "block";
-            }
-            else {
+                document.getElementById("info2").style.display="none";
+                document.getElementById("validuser").style.display = "none";
+
+            
+        }
+        function Validate(event) {
+            event.preventDefault();
+           
+     
+              
                 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-                
+
                 let condition = true;
-                
+
                 if (name == "") {
-                    document.getElementById("Usernone").style.display = "block";
+                    Usernone.style.display = "block";
                     condition = false;
                 }
 
 
 
                 if (password1 == "") {
-                    document.getElementById("passwordnone").style.display = "block";
+                    passwordnone.style.display = "block";
                     condition = false;
                 }
                 else if (password1.length < 6) {
-                    document.getElementById("validpassword").style.display = "block";
+                validpassword.style.display = "block";
                     condition = false;
                 }
 
@@ -154,34 +169,32 @@
                         }
                     }
                     if (emailpass == 0)
-                        document.getElementById("warning").style.display = "block";
-
-
-
-                }
-            }
+                        warning.style.display = "block";
+                    document.getElementById("form").reset();
+                       }
+            
         }
 
 
         function namechange() {
 
-            document.getElementById("warning").style.display = "none";
-            document.getElementById("Usernone").style.display = "none";
+            warning.style.display = "none";
+            Usernone.style.display = "none";
             document.getElementById("validuser").style.display = "none";
         }
         function emailchange() {
 
-            document.getElementById("warning").style.display = "none";
-            document.getElementById("emailnone").style.display = "none";
-            document.getElementById("validemail").style.display = "none";
+            warning.style.display = "none";
+            emailnone.style.display = "none";
+            validemail.style.display = "none";
         }
 
 
         function passwordchange() {
 
-            document.getElementById("warning").style.display = "none";
-            document.getElementById("passwordnone").style.display = "none";
-            document.getElementById("validpassword").style.display = "none";
+            warning.style.display = "none";
+            passwordnone.style.display = "none";
+        validpassword.style.display = "none";
         }
         function closesucessbox() {
 
@@ -191,52 +204,52 @@
 
             document.getElementById("successbox1").style.display = "none";
         }
-        function signup() {
+        function signup(event) {
+            event.preventDefault();
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
 
-           
+
             if (document.getElementById("signup1").style.display == "block") {
                 let condition = true;
-                
+
 
                 if (name == "") {
-                    document.getElementById("Usernone").style.display = "block";
+                    Usernone.style.display = "block";
                     conditiom = false;
                 }
                 else {
                     for (let x of logindetails) {
-                        if (x.userName == name)
-                        {
+                        if (x.userName == name) {
                             document.getElementById("validuser").style.display = "block";
-                            condition=false;
-                        break;
+                            condition = false;
+                            break;
                         }
                     }
 
                 }
 
                 if (email1 == "") {
-                    document.getElementById("emailnone").style.display = "block";
+                    emailnone.style.display = "block";
                     condition = false;
                 }
                 else if (!email1.match(emailPattern)) {
 
-                    document.getElementById("validemail").style.display = "block";
+                    validemail.style.display = "block";
                     condition = false;
                 }
 
 
                 if (password1 == "") {
-                    document.getElementById("passwordnone").style.display = "block";
+                    passwordnone.style.display = "block";
                     condition = false;
                 }
                 else if (password1.length < 6) {
 
-                    document.getElementById("validpassword").style.display = "block";
+                    validpassword.style.display = "block";
                     condition = false;
                 }
 
-                if (condition==true) {
+                if (condition == true) {
                     logindetails.push({
                         userName: name,
                         Email: email1,
@@ -244,20 +257,27 @@
 
                     })
                     document.getElementById("successbox1").style.display = "block";
+                    document.getElementById("form").reset();
+        
 
                 }
 
             }
             else {
+                document.getElementById("form").reset();
                 document.getElementById("signup").style.display = "block";
                 document.getElementById("signup1").style.display = "block";
+                document.getElementById("info2").style.display="block";
                 document.getElementById("signin").style.display = "none";
-                document.getElementById("warning").style.display = "none";
-                document.getElementById("emailnone").style.display = "none";
-                document.getElementById("Usernone").style.display = "none";
-                document.getElementById("validemail").style.display = "none";
-                document.getElementById("passwordnone").style.display = "none";
-                document.getElementById("validpassword").style.display = "none";
+                document.getElementById("buttonlogin").style.display = "none";
+                document.getElementById("buttonlogin1").style.display = "block";
+                warning.style.display = "none";
+                emailnone.style.display = "none";
+                Usernone.style.display = "none";
+                validemail.style.display = "none";
+                passwordnone.style.display = "none";
+                validpassword.style.display = "none";
+                document.getElementById("validuser").style.display = "none";
 
             }
         }
