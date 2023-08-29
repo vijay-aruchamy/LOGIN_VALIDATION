@@ -212,4 +212,9 @@ body {
 #buttonlogin1 {
     margin-top: 15px;
     display: none;
+    padding-left: 42px;
+    padding-right: 42px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 50%;
 }
