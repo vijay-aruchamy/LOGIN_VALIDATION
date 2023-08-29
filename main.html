@@ -80,18 +80,22 @@
         </div>
     </div>
     <script>
+        let details={
+            name :"",
+            password1: "",
+            email1:""
 
-        let name = "";
-        let password1 = "";
-        let email1 = "";
+        }
+
+       
         function getname(event) {
-            name = event.target.value;
+            details.name = event.target.value;
         }
         function getemail(event) {
-            email1 = event.target.value;
+            details.email1 = event.target.value;
         }
         function getpass(event) {
-            password1 = event.target.value;
+            details.password1 = event.target.value;
         }
         let warning = document.getElementById("warning");
         let emailnone = document.getElementById("emailnone");
@@ -106,8 +110,9 @@
             ]
         function login(event) {
             event.preventDefault();
-            password1="";
-            name="";
+            details.password1="";
+            details.name="";
+            document.getElementById("form").reset();
             document.getElementById("passwordinput").value = "";
             document.getElementById("signup").style.display = "none";
             document.getElementById("signup1").style.display = "none";
@@ -124,23 +129,23 @@
             event.preventDefault();
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
             let condition = true;
-            if (name == "") {
+            if (details.name == "") {
                 Usernone.style.display = "block";
                 condition = false;
             }
-            if (password1 == "") {
+            if (details.password1 == "") {
                 passwordnone.style.display = "block";
                 condition = false;
             }
             if (condition) {
                 let emailpass = 0;
                 for (let x of logindetails) {
-                    if (x.userName == name && x.password == password1) {
+                    if (x.userName == details.name && x.password == details.password1) {
                         document.getElementById("successbox").style.display = "block";
                         emailpass++;
                         break
                     }
-                    if(x.userName== name && x.password!=password1)
+                    if(x.userName== details.name && x.password!=details.password1)
                     {
                         document.getElementById("passwordwrong").style.display = "block";
                         emailpass++;
@@ -181,56 +186,56 @@
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
             if (document.getElementById("signup1").style.display == "block") {
                 let condition = true;
-                if (name == "") {
+                if (details.name == "") {
                     Usernone.style.display = "block";
                     conditiom = false;
                 }
                 else {
                     for (let x of logindetails) {
-                        if (x.userName == name) {
+                        if (x.userName == details.name) {
                             document.getElementById("validuser").style.display = "block";
                             condition = false;
                             break;
                         }
                     }
                 }
-                if (email1 == "") {
+                if (details.email1 == "") {
                     emailnone.style.display = "block";
                     condition = false;
                 }
-                else if (!email1.match(emailPattern)) {
+                else if (!details.email1.match(emailPattern)) {
 
                     validemail.style.display = "block";
                     condition = false;
                 }
-                if (password1 == "") {
+                if (details.password1 == "") {
                     passwordnone.style.display = "block";
                     condition = false;
                 }
-                else if (password1.length < 6) {
+                else if (details.password1.length < 6) {
 
                     validpassword.style.display = "block";
                     condition = false;
                 }
                 if (condition == true) {
                     logindetails.push({
-                        userName: name,
-                        Email: email1,
-                        password: password1
+                        userName: details.name,
+                        Email: details.email1,
+                        password: details.password1
 
                     })
                     document.getElementById("successbox1").style.display = "block";
                     document.getElementById("form").reset();
-                      name="";
-                      email1="";
-                      password1="";
+                    details.name="";
+                    details.email1="";
+                    details.password1="";
 
                 }
             }
             else {
-                name = "";
-                password1 = "";
-                 email1 = "";
+                details.name = "";
+                details.password1 = "";
+                details.email1 = "";
                 document.getElementById("form").reset();
                 document.getElementById("signup").style.display = "block";
                 document.getElementById("signup1").style.display = "block";

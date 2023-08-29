@@ -87,7 +87,8 @@ body {
     display: none;
     font-size: 10px;
     color: red;
-    margin-top: 0;
+    padding-top: 10px;
+    padding-left: 15px;
     position: absolute;
 }
 
