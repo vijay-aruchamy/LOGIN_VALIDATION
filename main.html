@@ -63,6 +63,7 @@
                     <input type="password" placeholder="******" oninput="passwordchange()" onchange="getpass(event)"
                         id="passwordinput">
                     <p id="passwordnone">password should not be empty</p>
+                    <p id="passwordwrong">password is wrong</p>
                     <p id="validpassword"> please enter valid password</p>
                     <p id="warning">Not a user want to signup..... </p>
                 </div>
@@ -139,6 +140,12 @@
                         emailpass++;
                         break
                     }
+                    if(x.userName== name && x.password!=password1)
+                    {
+                        document.getElementById("passwordwrong").style.display = "block";
+                        emailpass++;
+                        break;
+                    }
                 }
                 if (emailpass == 0)
                     warning.style.display = "block";
@@ -159,6 +166,7 @@
             warning.style.display = "none";
             passwordnone.style.display = "none";
             validpassword.style.display = "none";
+            document.getElementById("passwordwrong").style.display = "none";
         }
         function closesucessbox() {
 
@@ -220,6 +228,9 @@
                 }
             }
             else {
+                name = "";
+                password1 = "";
+                 email1 = "";
                 document.getElementById("form").reset();
                 document.getElementById("signup").style.display = "block";
                 document.getElementById("signup1").style.display = "block";
