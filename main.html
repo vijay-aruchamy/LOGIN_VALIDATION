@@ -72,20 +72,16 @@
 
             <button type="submit" class="button1" onclick="signup(event)"><i class="fa fa-google"></i>
                 Sign up </button>
-            <button type="submit" onclick="login(event)"  id="buttonlogin1">Log In</button>
-          
-
+            <button type="submit" onclick="login(event)" id="buttonlogin1">Log In</button>
         </div>
     </div>
     <script>
-        let details={
-            name :"",
+        let details = {
+            name: "",
             password1: "",
-            email1:""
+            email1: ""
 
         }
-
-       
         function getname(event) {
             details.name = event.target.value;
         }
@@ -108,8 +104,8 @@
             ]
         function login(event) {
             event.preventDefault();
-            details.password1="";
-            details.name="";
+            details.password1 = "";
+            details.name = "";
             document.getElementById("form").reset();
             document.getElementById("passwordinput").value = "";
             document.getElementById("signup").style.display = "none";
@@ -143,8 +139,7 @@
                         emailpass++;
                         break
                     }
-                    if(x.userName== details.name && x.password!=details.password1)
-                    {
+                    if (x.userName == details.name && x.password != details.password1) {
                         document.getElementById("passwordwrong").style.display = "block";
                         emailpass++;
                         break;
@@ -224,9 +219,9 @@
                     })
                     document.getElementById("successbox1").style.display = "block";
                     document.getElementById("form").reset();
-                    details.name="";
-                    details.email1="";
-                    details.password1="";
+                    details.name = "";
+                    details.email1 = "";
+                    details.password1 = "";
 
                 }
             }
