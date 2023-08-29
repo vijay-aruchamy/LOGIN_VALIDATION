@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 
 <body>
@@ -45,10 +44,6 @@
                 <div class="emailform" id="signup">
                     <div class="Email">
                         <label id="labelemail">Email</label>
-                        <div class="hoverEffect">
-                            <i class="fa fa-info-circle" id="info1"></i>
-                            <p id="emailwarning">*Email should contain @gmail.com</p>
-                        </div>
                     </div>
                     <input type="email" placeholder="Enter your Email" id="emailinput" class="emailinput1"
                         oninput="emailchange()" onchange="getemail(event)">
@@ -59,8 +54,10 @@
                     <div class="password">
                         <label>Password</label><br>
                         <div class="hoverEffect1">
-                            <i class="fa fa-info-circle" id="info2"></i>
-                            <p id="passwarning">*Password should contain atleast 6 character</p>
+                            <div style="display: flex;">
+                                <i class="fa fa-info-circle" id="info2"></i>
+                                <p id="passwarning">*Password should contain atleast 6 character</p>
+                            </div>
                         </div>
                     </div>
                     <input type="password" placeholder="******" oninput="passwordchange()" onchange="getpass(event)"
@@ -71,10 +68,10 @@
                 </div>
                 <button type="submit" onclick="Validate(event)" class="button" id="buttonlogin">Log In</button>
             </form>
-           
-                   <button type="submit" class="button1" onclick="signup(event)"><i class="fa fa-google"></i>
+
+            <button type="submit" class="button1" onclick="signup(event)"><i class="fa fa-google"></i>
                 Sign up </button>
-                <button type="submit" onclick="login(event)" class="button" id="buttonlogin1">Log In</button>
+            <button type="submit" onclick="login(event)" class="button" id="buttonlogin1">Log In</button>
             <p class="para">Already have an account?
                 <a href="" class="sample">Log in</a>
             </p>
@@ -86,8 +83,6 @@
         let name = "";
         let password1 = "";
         let email1 = "";
-
-
         function getname(event) {
             name = event.target.value;
         }
@@ -97,110 +92,71 @@
         function getpass(event) {
             password1 = event.target.value;
         }
-        let warning=document.getElementById("warning");
-        let emailnone=document.getElementById("emailnone");
-        let passwordnone=document.getElementById("passwordnone");
-        let Usernone=document.getElementById("Usernone");
-        let validemail=document.getElementById("validemail");
-        let validpassword=document.getElementById("validpassword");
+        let warning = document.getElementById("warning");
+        let emailnone = document.getElementById("emailnone");
+        let passwordnone = document.getElementById("passwordnone");
+        let Usernone = document.getElementById("Usernone");
+        let validemail = document.getElementById("validemail");
+        let validpassword = document.getElementById("validpassword");
 
         let logindetails =
             [
-                {
-                    userName: "vignesh",
-                    Email: "vignesh@gmail.com",
-                    password: "vicky123",
-                },
-                {
-                    userName: "vijay",
-                    Email: "vijay@gmail.com",
-                    password: "vijay123",
-                },
-                {
-                    userName: "paul",
-                    Email: "paul",
-                    password: "paul123"
-                }
-            ]
-            function login(event)
-            {
-                event.preventDefault();
-                document.getElementById("passwordinput").value = "";
-                document.getElementById("signup").style.display = "none";
-                document.getElementById("signup1").style.display = "none";
-                document.getElementById("signin").style.display = "block";
-                document.getElementById("info2").style.display="none";
-                document.getElementById("validuser").style.display = "none";
-                document.getElementById("buttonlogin").style.display = "block";
-                document.getElementById("buttonlogin1").style.display = "none";
-                Usernone.style.display = "none";
-                validpassword.style.display = "none";
-                document.getElementById("form").reset();
-                passwordnone.style.display = "none";
 
-            
+            ]
+        function login(event) {
+            event.preventDefault();
+            document.getElementById("passwordinput").value = "";
+            document.getElementById("signup").style.display = "none";
+            document.getElementById("signup1").style.display = "none";
+            document.getElementById("signin").style.display = "block";
+            document.getElementById("info2").style.display = "none";
+            document.getElementById("validuser").style.display = "none";
+            document.getElementById("buttonlogin").style.display = "block";
+            document.getElementById("buttonlogin1").style.display = "none";
+            Usernone.style.display = "none";
+            validpassword.style.display = "none";
+            passwordnone.style.display = "none";
         }
         function Validate(event) {
             event.preventDefault();
-           
-     
-              
-                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-
-                let condition = true;
-
-                if (name == "") {
-                    Usernone.style.display = "block";
-                    condition = false;
-                }
-
-
-
-                if (password1 == "") {
-                    passwordnone.style.display = "block";
-                    condition = false;
-                }
-                else if (password1.length < 6) {
-                validpassword.style.display = "block";
-                    condition = false;
-                }
-
-                if (condition) {
-                    let emailpass = 0;
-                    for (let x of logindetails) {
-                        if (x.userName == name && x.password == password1) {
-                            document.getElementById("successbox").style.display = "block";
-                            emailpass++;
-                            break
-                        }
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+            let condition = true;
+            if (name == "") {
+                Usernone.style.display = "block";
+                condition = false;
+            }
+            if (password1 == "") {
+                passwordnone.style.display = "block";
+                condition = false;
+            }
+            if (condition) {
+                let emailpass = 0;
+                for (let x of logindetails) {
+                    if (x.userName == name && x.password == password1) {
+                        document.getElementById("successbox").style.display = "block";
+                        emailpass++;
+                        break
                     }
-                    if (emailpass == 0)
-                        warning.style.display = "block";
-                    document.getElementById("form").reset();
-                       }
-            
+                }
+                if (emailpass == 0)
+                    warning.style.display = "block";
+            }
+
         }
-
-
         function namechange() {
-
             warning.style.display = "none";
             Usernone.style.display = "none";
             document.getElementById("validuser").style.display = "none";
         }
         function emailchange() {
-
             warning.style.display = "none";
             emailnone.style.display = "none";
             validemail.style.display = "none";
         }
-
-
         function passwordchange() {
-
             warning.style.display = "none";
             passwordnone.style.display = "none";
-        validpassword.style.display = "none";
+            validpassword.style.display = "none";
         }
         function closesucessbox() {
 
@@ -213,12 +169,8 @@
         function signup(event) {
             event.preventDefault();
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
-
-
             if (document.getElementById("signup1").style.display == "block") {
                 let condition = true;
-
-
                 if (name == "") {
                     Usernone.style.display = "block";
                     conditiom = false;
@@ -231,9 +183,7 @@
                             break;
                         }
                     }
-
                 }
-
                 if (email1 == "") {
                     emailnone.style.display = "block";
                     condition = false;
@@ -243,8 +193,6 @@
                     validemail.style.display = "block";
                     condition = false;
                 }
-
-
                 if (password1 == "") {
                     passwordnone.style.display = "block";
                     condition = false;
@@ -254,7 +202,6 @@
                     validpassword.style.display = "block";
                     condition = false;
                 }
-
                 if (condition == true) {
                     logindetails.push({
                         userName: name,
@@ -264,16 +211,17 @@
                     })
                     document.getElementById("successbox1").style.display = "block";
                     document.getElementById("form").reset();
-        
+                      name="";
+                      email1="";
+                      password1="";
 
                 }
-
             }
             else {
                 document.getElementById("form").reset();
                 document.getElementById("signup").style.display = "block";
                 document.getElementById("signup1").style.display = "block";
-                document.getElementById("info2").style.display="block";
+                document.getElementById("info2").style.display = "block";
                 document.getElementById("signin").style.display = "none";
                 document.getElementById("buttonlogin").style.display = "none";
                 document.getElementById("buttonlogin1").style.display = "block";
@@ -287,7 +235,6 @@
 
             }
         }
-
     </script>
 </body>
 

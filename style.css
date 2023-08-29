@@ -5,16 +5,11 @@ body {
     background-color: lightgrey;
 }
 
-
-
 .container {
     position: fixed;
     width: 95%;
     height: 90%;
     display: flex;
-
-
-
 }
 
 .left {
@@ -58,7 +53,7 @@ body {
 
 .Email {
     display: flex;
-   
+
 }
 
 #emailwarning {
@@ -70,17 +65,12 @@ body {
     display: none;
 }
 
-.hoverEffect:hover #emailwarning {
-    display: block;
-}
-
 .hoverEffect1:hover #passwarning {
     display: block;
 }
 
 .password {
     display: flex;
-
 }
 
 #passwarning {
@@ -90,6 +80,7 @@ body {
     font-size: 10px;
     display: none;
     position: absolute;
+    margin-left: 20px;
 }
 
 #warning {
@@ -105,8 +96,6 @@ body {
     margin-top: 0;
     color: red;
     font-size: 10px;
-
-
 }
 
 #Usernone {
@@ -116,14 +105,13 @@ body {
     font-size: 10px;
     position: absolute;
 }
+
 #validuser {
     display: none;
     margin-top: 0;
     color: red;
     font-size: 10px;
-
 }
-
 
 #passwordnone {
     display: none;
@@ -133,15 +121,9 @@ body {
     position: absolute;
 }
 
-#info1 {
-    padding-left: 70px;
-    font-size: 18px;
-    color: lightblue;
-}
-
 #info2 {
-    padding-left: 80px;
-    font-size: 18px;
+    padding-left: 5px;
+    font-size: 15px;
     color: lightblue;
     display: none;
 }
@@ -159,7 +141,6 @@ body {
     margin-top: 0;
     color: red;
     font-size: 10px;
-
 }
 
 #successbox {
@@ -198,24 +179,26 @@ body {
 }
 
 #emailinput {
-    margin-top: 15px;
-
+    margin-top: 7px;
 }
 
 #passwordinput {
-    margin-top: 15px;
-
+    margin-top: 7px;
 }
 
 #nameinput {
-    margin-top: 15px;
-
+    margin-top: 7px;
 }
 
-.emailform,
-.passwordform {
+.emailform {
     height: 80px;
     padding-top: 20px;
+}
+
+.passwordform {
+    height: 80px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #signup {
@@ -226,8 +209,7 @@ body {
     display: none;
 }
 
-#buttonlogin1
-{
+#buttonlogin1 {
     margin-top: 15px;
-    display: none; 
+    display: none;
 }
