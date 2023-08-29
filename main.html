@@ -98,10 +98,7 @@
         let validemail = document.getElementById("validemail");
         let validpassword = document.getElementById("validpassword");
 
-        let logindetails =
-            [
-
-            ]
+        let logindetails = []
         function login(event) {
             event.preventDefault();
             details.password1 = "";
@@ -226,9 +223,7 @@
                 }
             }
             else {
-                details.name = "";
-                details.password1 = "";
-                details.email1 = "";
+                details = { name: "", password1: "", email1: "" };
                 document.getElementById("form").reset();
                 document.getElementById("signup").style.display = "block";
                 document.getElementById("signup1").style.display = "block";
